@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Makati Explorer</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .gallery-container {
+            text-align: center;
+            padding: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Makati Explorer</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container gallery-container">
+        <h2>Gallery</h2>
+        <p>Upload and explore photos from your Makati adventures!</p>
+        
+        <input type="file" id="imageUpload" accept="image/*">
+        <button class="btn btn-primary mt-2" onclick="uploadImage()">Upload</button>
+        
+        <div class="gallery mt-4" id="gallery"></div>
+    </main>
+    
+    <footer class="site-footer">
+        <hr>
+        <p>Adventure Awaits</p>
+    </footer>
+    
+    <script>
+        function uploadImage() {
+            const input = document.getElementById('imageUpload');
+            const gallery = document.getElementById('gallery');
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    gallery.appendChild(img);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+:root {
+    --header-footer-bg: #d1f4aa; /* Matcha */
+    --body-bg: #FCEEB5; /* Banana Cream */
+    --font-color: #6D1D1D; /* Oxblood */
+}
+
+body {
+    background-color: var(--body-bg);
+    font-family: "Times New Roman", serif;
+    color: #6D1D1D;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-header, .site-footer {
+    background-color: var(--header-footer-bg);
+    color: rgb(118, 17, 17);
+    text-align: center;
+    padding: 10px 0;
+}
+
+.site-footer {
+    margin-top: auto;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(235, 111, 58) !important;
+}
+
+.container {
+    flex: 1;
+    text-align: center;
+    padding: 50px 20px;
+}

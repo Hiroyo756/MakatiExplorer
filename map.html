@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makati Explorer Map</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Makati Explorer</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Map  -->
+    <main class="container mt-4">
+        <h2 class="text-center">Explore Makati</h2>
+        <p class="text-center">Find and complete challenges at different locations!</p>
+        <div id="map" style="height: 500px;"></div>
+    </main>
+
+    <!-- Footer  -->
+    <footer class="site-footer">
+        <hr>
+        <p>Adventure Awaits</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var map = L.map('map').setView([14.5547, 121.0244], 14); 
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+        //  locations
+        var locations = [
+            { name: "Ayala Triangle", coords: [14.5535, 121.021], description: "A park in the heart of Makati." },
+            { name: "Greenbelt Park", coords: [14.5512, 121.0266], description: "A beautiful open space in Makati." },
+            { name: "Poblacion", coords: [14.5661, 121.0285], description: "A hotspot for nightlife and culture." }
+        ];
+
+        locations.forEach(loc => {
+            L.marker(loc.coords).addTo(map)
+                .bindPopup(`<strong>${loc.name}</strong><br>${loc.description}`);
+        });
+    </script>
+</body>
+</html>
